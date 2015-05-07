@@ -10,12 +10,9 @@
 <%@page import="org.apache.jasper.tagplugins.jstl.core.Redirect"%>
 <%@page import="DataAccessLayer.UserDAL"%>
 <%@page import="Model.User"%>
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
-
-
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Login</title>
@@ -31,8 +28,6 @@
 
     </head>
     <body >
-
-
         <div class="container">
             <form action="Login.jsp" class="form-sigin">
                 <h1><font color="white">Welcome to page</font></h1>
