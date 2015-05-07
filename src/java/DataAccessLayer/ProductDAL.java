@@ -23,7 +23,7 @@ import java.util.logging.Logger;
 
 /**
  *
- * @author Toan
+ * @author MK
  */
 public class ProductDAL {
     Connection cn;

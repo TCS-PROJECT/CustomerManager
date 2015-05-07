@@ -23,7 +23,7 @@ import java.util.logging.Logger;
 
 /**
  *
- * @author BCK
+ * @author MK
  */
 public class CustomerDAL {
 

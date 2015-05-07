@@ -1,3 +1,8 @@
+<%-- 
+    Document   : Modal
+    Created on : May 7, 2015, 12:45:35 PM
+    Author     : MK
+--%>
 <a href="#myModal" data-toggle="modal" >Modal</a>
 
 

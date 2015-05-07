@@ -1,3 +1,8 @@
+<%-- 
+    Document   : Logout
+    Created on : May 7, 2015, 12:54:35 PM
+    Author     : MK
+--%>
 <nav class="navbar navbar-default">
 
 	<ul class="nav nav-tabs">
@@ -16,9 +21,7 @@
   </li>
   
     <li role="presentation"><a href="about.jsp">About </a></li>
-    <li role="presentation"><a href="Login.jsp">Logout </a></li>
-  
-  
+    <li role="presentation"><a href="Logout.jsp">Logout </a></li>
 </ul>
 
 </nav><!-- narbar -->
@@ -35,4 +38,4 @@
                 response.sendRedirect("Login.jsp");
              }
             
-        %>
+%>
