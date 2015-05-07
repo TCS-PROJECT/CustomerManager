@@ -18,7 +18,7 @@ import java.util.logging.Logger;
 
 /**
  *
- * @author MK
+ * @author BCK
  */
 public class UserDAL {
 
@@ -171,11 +171,9 @@ public class UserDAL {
             else{
                 
             }
-
         } catch (Exception ex) {
             valid = false;
         }
         return valid;
-
     }
 }

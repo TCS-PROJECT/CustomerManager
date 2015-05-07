@@ -23,7 +23,7 @@ import java.util.logging.Logger;
 
 /**
  *
- * @author MK
+ * @author Toan
  */
 public class ProductDAL {
     Connection cn;
@@ -38,10 +38,7 @@ public class ProductDAL {
              ResultSet rs=st.executeQuery("select * from Product where Name like '%"+userName+"%' ");
                 while(rs.next())
                    productList.add(new Product(rs.getString(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5),rs.getString(6),rs.getString(7),rs.getString(8),rs.getString(9),rs.getString(10)));
-                    
-                   
-                
-                
+         
         } catch (SQLException ex) {
             Logger.getLogger(User.class.getName()).log(Level.SEVERE, null, ex);
         }

@@ -23,7 +23,7 @@ import java.util.logging.Logger;
 
 /**
  *
- * @author MK
+ * @author BCK
  */
 public class CustomerDAL {
 
@@ -36,7 +36,7 @@ public class CustomerDAL {
         try {
             cn = DriverManager.getConnection("Jdbc:Odbc:ADV_Project");
             Statement st = cn.createStatement();
-            if (userName.equals("All customers")) {
+            if (userName.equals("All")) {
                 rs = st.executeQuery("select * from CustomerDetails ");
             } else {
                 rs = st.executeQuery("select * from CustomerDetails where Name like '%" + userName + "%' ");
@@ -132,7 +132,7 @@ public class CustomerDAL {
     }
 
     public void Update(String Name, String Address, String Gender, String Dob, String Married, String Status, String Start, String End, String Income, String Id) {
-        //Product newProduct=null;
+        
         try {
 
             Connection cnn = DriverManager.getConnection("Jdbc:Odbc:ADV_Project");
