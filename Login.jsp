@@ -29,7 +29,7 @@
     </head>
     <body >
         <div class="container">
-            <form action="Login.jsp" class="form-sigin">
+            <form action="Login.jsp" class="form-sigin" method="POST">
                 <h1><font color="white">Welcome to page</font></h1>
                 <h3 class="form-signin-heading"><font color="white">Please sign in:</font></h3>
                 <div class="row">

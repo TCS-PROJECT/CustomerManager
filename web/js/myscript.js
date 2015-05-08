@@ -51,5 +51,6 @@ $(function() {
     $("#user a:contains('User')").parent().addClass('active');
     $("#about a:contains('About')").parent().addClass('active');
 
+    // trich dan tham khao https://github.com/mimzy/weblab
 });
 
