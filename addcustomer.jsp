@@ -12,10 +12,82 @@
     </head>
     <body>
         <script>
+            function isDate(txtDate)
+            {
+                 //check date
+
+                var currVal = txtDate;
+                if (currVal == '')
+                {
+                    alert("Date can't be blank");
+                    return false;
+                }
+
+                var rxDatePattern = /^(\d{1,2})(\/|-)(\d{1,2})(\/|-)(\d{4})$/; //Declare Regex
+                var dtArray = currVal.match(rxDatePattern); // is format OK?
+
+                if (dtArray == null)
+                {
+                    alert("Date must be in the format dd/mm/yyyy");
+                    return false;
+                }
+
+                //Checks for mm/dd/yyyy format.
+                dtMonth = dtArray[1];
+                dtDay = dtArray[3];
+                dtYear = dtArray[5];
+
+                if (dtMonth < 1 || dtMonth > 12)
+                {
+                    alert("Date error!");
+                    return false;
+                }
+                else if (dtDay < 1 || dtDay > 31)
+                {
+                    alert("Date error!");
+                    return false;
+                }
+                else if ((dtMonth == 4 || dtMonth == 6 || dtMonth == 9 || dtMonth == 11) && dtDay == 31)
+                {
+                    alert("Date error!");
+                    return false;
+                }
+                else if (dtMonth == 2)
+                {
+                    var isleap = (dtYear % 4 == 0 && (dtYear % 100 != 0 || dtYear % 400 == 0));
+                    if (dtDay > 29 || (dtDay == 29 && !isleap))
+                    {
+                        alert("Date error!");
+                        return false;
+                    }
+                }
+
+                //end check
+
+                return true;
+            }
+
             function validateform() {
                 var name = document.myform.txtNa.value;
                 var add = document.myform.txtDes.value;
                 var income = document.myform.txtPrice.value;
+
+
+                if (name == null || name == "") {
+                    alert("Customer name can't be blank");
+                    return false;
+                }
+                if (add == null || add == "") {
+                    alert("Address can't be blank");
+                    return false;
+                }
+
+               var dob = document.myform.txtMnf.value;
+               isDate(dob);
+               var st = document.myform.txtStart.value;
+               isDate(st);
+               var en = document.myform.txtEnd.value;
+               isDate(en);
                 var start = Date.parse(document.myform.txtStart.value.split('/').reverse().join('/'));
                 var end = Date.parse(document.myform.txtEnd.value.split('/').reverse().join('/'));
                 if (start > end) {
@@ -34,14 +106,6 @@
                 if (mdate > today)
                 {
                     alert("Date of birth can't be in future!");
-                    return false;
-                }
-                if (name == null || name == "") {
-                    alert("Customer name can't be blank");
-                    return false;
-                }
-                if (add == null || add == "") {
-                    alert("Address can't be blank");
                     return false;
                 }
 
