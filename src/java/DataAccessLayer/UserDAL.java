@@ -53,10 +53,14 @@ public class UserDAL {
             PreparedStatement neww = cn.prepareStatement("insert into Users values (?,?)");
             neww.setString(1, name);
             neww.setString(2, password);
-            neww.executeUpdate();
-            //if(rs.next()){
-            //  newUser = new User(rs.getString(1),rs.getString(2));
-            //}else return null;
+            int a = neww.executeUpdate();
+            if (a==0)
+            {
+                return null;
+            }
+            else{
+                newUser = new User(name, password);
+            }
 
         } catch (SQLException ex) {
             Logger.getLogger(User.class.getName()).log(Level.SEVERE, null, ex);
@@ -82,8 +86,8 @@ public class UserDAL {
 
     }
 
-    public ArrayList<String> Update_User(String name, String password) {
-        ArrayList<String> updateUser = new ArrayList<String>();
+    public User Update_User(String name, String password) {
+        User updateUser = null;
         try {
             cn = DriverManager.getConnection("Jdbc:Odbc:ADV_Project");
             Connection cn = DriverManager.getConnection("Jdbc:Odbc:ADV_Project");
@@ -92,10 +96,15 @@ public class UserDAL {
                     + "  where Name = ?");
             update.setString(1, password);
             update.setString(2, name);
-            update.executeUpdate();
-            //if(rs.next()){
-            //  newUser = new User(rs.getString(1),rs.getString(2));
-            //}else return null;
+            int a= update.executeUpdate();
+            if (a==0)
+            {
+                return null;
+            }
+            else{
+                updateUser = new User(name, password);
+            }
+            
 
         } catch (SQLException ex) {
             Logger.getLogger(User.class.getName()).log(Level.SEVERE, null, ex);
@@ -124,19 +133,19 @@ public class UserDAL {
         return user;
     }
 
-    public User Delete_User(String name) {
-        User user = null;
+    public int Delete_User(String name) {
+        int a = 0;
 
         try {
             cn = DriverManager.getConnection("Jdbc:Odbc:ADV_Project");
             PreparedStatement ps = cn.prepareStatement(" delete Users where Name = ? ");
             ps.setString(1, name);
-            ps.executeUpdate();
+            a = ps.executeUpdate();
 
         } catch (SQLException ex) {
             Logger.getLogger(User.class.getName()).log(Level.SEVERE, null, ex);
         }
-        return user;
+        return a;
     }
 
     public User SelectLogIn(String userName, String passWord) {

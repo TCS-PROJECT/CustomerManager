@@ -51,7 +51,7 @@ public class CustomerDAL {
         return customerList;
     }
 
-    public ArrayList<Customer> SearchbyPrice(String dob) {
+    public ArrayList<Customer> SearchbyDOB(String dob) {
         Customer newCustomer = null;
         ArrayList<Customer> customerList = new ArrayList<Customer>();
         try {
@@ -165,7 +165,6 @@ public class CustomerDAL {
 
             ps.setInt(1, Integer.parseInt(Id));
 
-               //ps.executeUpdate(); 
             ResultSet rs = ps.executeQuery();
 
         } catch (SQLException ex) {

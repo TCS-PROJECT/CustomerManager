@@ -177,7 +177,7 @@
                     if (request.getParameter("txtMnf").equals("") == true && request.getParameter("txtName").equals("") == true) {
                         isNull = true;
                     } else if (request.getParameter("txtName").equals("")) {
-                        pList = customerDAL.SearchbyPrice(request.getParameter("txtMnf"));
+                        pList = customerDAL.SearchbyDOB(request.getParameter("txtMnf"));
                     } else if (request.getParameter("txtMnf").equals("")) {
                         pList = customerDAL.SearchbyName(request.getParameter("txtName"));
                     } else {
