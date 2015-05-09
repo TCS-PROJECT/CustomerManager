@@ -14,8 +14,8 @@
 
             <dl>
                 <dt><h2><font color="#3C3C3C">Customer information</font></h2></dt>
-                <dd><a href="addproduct.jsp">Add New Customer</a></dd>
-                <dd><a href="searchproduct.jsp">Search Customer</a></dd>                               
+                <dd><a href="addcustomer.jsp">Add New Customer</a></dd>
+                <dd><a href="searchcustomer.jsp">Search Customer</a></dd>                               
                 <dt><h2><font color="#3C3C3C">User information</font></h2></dt>
                 <dd><a href="AddNewUser.jsp">Add New User</a></dd>
                 <dd><a href="ChangePassword.jsp">Change Password</a></dd>

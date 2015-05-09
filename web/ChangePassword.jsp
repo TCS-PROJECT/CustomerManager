@@ -32,8 +32,7 @@
                                 User u = new User(na, pa);
                                 ArrayList<String> arr = new ArrayList<String>();
                                 arr.addAll(user.Select_all_Username());
-                                boolean d = arr.contains(na);
-                                if (d == true) {
+                                if (arr.contains(na)) {
                                     user.Update_User(na, pa);
                         %>
                     <div class="modal fade" id="thongbao" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">

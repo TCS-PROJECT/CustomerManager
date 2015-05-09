@@ -37,12 +37,32 @@ $(function() {
         modal.find('#start').val(pstart)
         modal.find('#end').val(pend)
         modal.find('#price').val(pprice)
+        $("#id").prop("readonly",true);
         if (title == 'Customer Detail') {
             $('#btnSave').addClass('hidden');
-            
+            $("#name").prop("readonly",true);
+            $("#des").prop("readonly",true);
+            $("#mnf").prop("readonly",true);
+            $("#madein").prop("readonly",true);
+            $("#discount").prop("readonly",true);
+            $("#status").prop("readonly",true);
+            $("#start").prop("readonly",true);
+            $("#end").prop("readonly",true);
+            $("#price").prop("readonly",true);
         }
-        if (title == 'Update Customer')
-            $('#btnSave').removeClass('hidden');
+        if (title == 'Update Customer'){
+            $('#btnSave').removeClass('hidden');        
+            $("#name").prop("readonly",false);
+            $("#des").prop("readonly",false);
+            $("#mnf").prop("readonly",false);
+            $("#madein").prop("readonly",false);
+            $("#discount").prop("readonly",false);
+            $("#status").prop("readonly",false);
+            $("#start").prop("readonly",false);
+            $("#end").prop("readonly",false);
+            $("#price").prop("readonly",false);
+        }
+            
     });
     //auto active
     $("#home a:contains('Home')").parent().addClass('active');
@@ -51,6 +71,5 @@ $(function() {
     $("#user a:contains('User')").parent().addClass('active');
     $("#about a:contains('About')").parent().addClass('active');
 
-    // trich dan tham khao https://github.com/mimzy/weblab
 });
 

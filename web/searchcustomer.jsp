@@ -36,9 +36,15 @@
                     return false;
                 }
 
+<<<<<<< HEAD
                 //Checks for dd/mm/yyyy format.
                 dtMonth = dtArray[3];
                 dtDay = dtArray[1];
+=======
+                //Checks for mm/dd/yyyy format.
+                dtMonth = dtArray[1];
+                dtDay = dtArray[3];
+>>>>>>> origin/master
                 dtYear = dtArray[5];
 
                 if (dtMonth < 1 || dtMonth > 12)
@@ -177,7 +183,11 @@
                     if (request.getParameter("txtMnf").equals("") == true && request.getParameter("txtName").equals("") == true) {
                         isNull = true;
                     } else if (request.getParameter("txtName").equals("")) {
+<<<<<<< HEAD
                         pList = customerDAL.SearchbyPrice(request.getParameter("txtMnf"));
+=======
+                        pList = customerDAL.SearchbyDOB(request.getParameter("txtMnf"));
+>>>>>>> origin/master
                     } else if (request.getParameter("txtMnf").equals("")) {
                         pList = customerDAL.SearchbyName(request.getParameter("txtName"));
                     } else {
