@@ -32,15 +32,9 @@
                     return false;
                 }
 
-<<<<<<< HEAD
                 //Checks for dd/mm/yyyy format.
                 dtMonth = dtArray[3];
                 dtDay = dtArray[1];
-=======
-                //Checks for mm/dd/yyyy format.
-                dtMonth = dtArray[1];
-                dtDay = dtArray[3];
->>>>>>> origin/master
                 dtYear = dtArray[5];
 
                 if (dtMonth < 1 || dtMonth > 12)
