@@ -69,8 +69,8 @@
 
             function validateform() {
                 var name = document.myform.txtNa.value;
-                var add = document.myform.txtDes.value;
-                var income = document.myform.txtPrice.value;
+                var add = document.myform.txtAddress.value;
+                var income = document.myform.txtIncome.value;
 
 
                 if (name == null || name == "") {
@@ -82,12 +82,19 @@
                     return false;
                 }
 
-               var dob = document.myform.txtMnf.value;
-               isDate(dob);
+              var dob = document.myform.txtMnf.value;
+               if(isDate(dob)==false){
+                   return false;
+               }
+       
                var st = document.myform.txtStart.value;
-               isDate(st);
+               if(isDate(st)==false){
+                   return false;
+               }
                var en = document.myform.txtEnd.value;
-               isDate(en);
+               if(isDate(en)==false){
+                   return false;
+               }
                 var start = Date.parse(document.myform.txtStart.value.split('/').reverse().join('/'));
                 var end = Date.parse(document.myform.txtEnd.value.split('/').reverse().join('/'));
                 if (start > end) {
@@ -101,7 +108,7 @@
 
                 var today = new Date(y, m, d);
 
-                var mdate = new Date(document.myform.txtMnf.value.split('/').reverse().join('/'));
+                var mdate = new Date(document.myform.txtDOB.value.split('/').reverse().join('/'));
 
                 if (mdate > today)
                 {
@@ -132,11 +139,11 @@
 
                 CustomerDAL pro = new CustomerDAL();
                 String discount = "Yes";
-                if (request.getParameter("txtDiscount") == null) {
+                if (request.getParameter("txtMarried") == null) {
                     discount = "No";
                 }
 
-                pro.Insert(request.getParameter("txtNa"), request.getParameter("txtDes"), request.getParameter("txtMadein"), request.getParameter("txtMnf").trim(), discount, request.getParameter("txtStatus"), request.getParameter("txtStart"), request.getParameter("txtEnd"), request.getParameter("txtPrice"));
+                pro.Insert(request.getParameter("txtNa"), request.getParameter("txtAddress"), request.getParameter("txtSex"), request.getParameter("txtDOB").trim(), discount, request.getParameter("txtStatus"), request.getParameter("txtStart"), request.getParameter("txtEnd"), request.getParameter("txtIncome"));
 
         %>
         <div class="modal fade" id="thongbao" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -170,13 +177,13 @@
 
                             <input name="txtNa" id="name" type="text" ></p>
                         <p><span class="label label-primary">Address:</span>
-                            <input name="txtDes" id="des" type="text" value=""></p>
+                            <input name="txtAddress" id="des" type="text" value=""></p>
                         <p><span class="label label-danger">DOB</span>
-                            <input name="txtMnf" id="mnf" type="text" ></p>
+                            <input name="txtDOB" id="mnf" type="text" ></p>
                         <p><span class="label label-default">Gender</span>
-                            <input name="txtMadein" id="madein" type="radio" value="Male">Male  <input name="txtMadein" id="madein" type="radio" value="Female">Female</p>
+                            <input name="txtSex" id="madein" type="radio" value="Male">Male  <input name="txtSex" id="madein" type="radio" value="Female">Female</p>
                         <p><span class="label label-warning">Married</span>
-                            <input name="txtDiscount" id="discount" type="checkbox" ></p>
+                            <input name="txtMarried" id="discount" type="checkbox" ></p>
                         <p><span class="label label-info" id="status">Status</span>
                             <select name="txtStatus">
                                 <option value="Live">Live</option>
@@ -189,11 +196,11 @@
                             <input name="txtEnd" id="end" type="text" >
                         </p>
                         <p><span class="label label-warning">Income</span>
-                            <input name="txtPrice" id="price" type="text" ></p>
+                            <input name="txtIncome" id="price" type="text" ></p>
 
 
                         <div class="panel-footer">
-                            <button type="button" class="btn btn-default" >Back</button>
+                            <button type="button" class="btn btn-default" onclick="window.location = 'homepage.jsp'">Back</button>
                             <input type="submit" name="btnSave"  class="btn btn-primary"  value="Save"/>
                         </div>
                     </form> 

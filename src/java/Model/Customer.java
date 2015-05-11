@@ -102,7 +102,7 @@ public class Customer {
         this.income = income;
     }
 
-    public Customer(String id, String name, String address, String gender, String dob, String married, String status, String startDate, String endDate, String income) {
+    public Customer(String id, String name, String address, String dob,String gender, String married, String status, String startDate, String endDate, String income) {
         this.id = id;
         this.name = name;
         this.address = address;

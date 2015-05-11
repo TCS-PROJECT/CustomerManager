@@ -17,6 +17,8 @@ $(function() {
         var pdes = button.data('pdes')
         var pmnf = button.data('pmnf')
         var pmadein = button.data('pmadein')
+        
+        
         var pdc = button.data('pdc')
         var psta = button.data('psta')
         var pstart = button.data('pstart')
@@ -28,29 +30,56 @@ $(function() {
         modal.find('#name').val(pname)
         modal.find('#des').val(pdes)
         modal.find('#mnf').val(pmnf)
+        
         modal.find('#madein').val(pmadein)
-        if (pdc == 'Yes')
+//        document.writeln(modal.find('#madein').val())
+        
+        
+        if (pdc == 'Yes'){
             modal.find('#discount').prop("checked", true);
-        if (pdc == 'No')
+        } else {
             modal.find('#discount').prop("checked", false);
+        }
+            
+            
+        
         modal.find('#status').val(psta)
         modal.find('#start').val(pstart)
         modal.find('#end').val(pend)
         modal.find('#price').val(pprice)
+        $("#id").prop("readonly",true);
         if (title == 'Customer Detail') {
             $('#btnSave').addClass('hidden');
-            
+            $("#name").prop("readonly",true);
+            $("#des").prop("readonly",true);
+            $("#mnf").prop("readonly",true);
+            $("#madein").prop("readonly",true);
+            $("#discount").prop("readonly",true);
+            $("#status").prop("readonly",true);
+            $("#start").prop("readonly",true);
+            $("#end").prop("readonly",true);
+            $("#price").prop("readonly",true);
         }
-        if (title == 'Update Customer')
-            $('#btnSave').removeClass('hidden');
+        if (title == 'Update Customer'){
+            $('#btnSave').removeClass('hidden');        
+            $("#name").prop("readonly",false);
+            $("#des").prop("readonly",false);
+            $("#mnf").prop("readonly",false);
+            $("#madein").prop("readonly",false);
+            $("#discount").prop("readonly",false);
+            $("#status").prop("readonly",false);
+            $("#start").prop("readonly",false);
+            $("#end").prop("readonly",false);
+            $("#price").prop("readonly",false);
+        }
+            
     });
     //auto active
     $("#home a:contains('Home')").parent().addClass('active');
-    $("#search a:contains('Product')").parent().addClass('active');
+    $("#search a:contains('Customer')").parent().addClass('active');
     $("#add a:contains('Add')").parent().addClass('active');
     $("#user a:contains('User')").parent().addClass('active');
     $("#about a:contains('About')").parent().addClass('active');
+    // tham khao https://github.com/mimzy/webla
 
-    // trich dan tham khao https://github.com/mimzy/weblab
 });
-

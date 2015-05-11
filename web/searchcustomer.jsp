@@ -16,7 +16,7 @@
     </head>
     <body>
         <script >
-             function isDate(txtDate)
+            function isDate(txtDate)
             {
                  //check date
 
@@ -35,7 +35,6 @@
                     alert("Date must be in the format dd/mm/yyyy");
                     return false;
                 }
-
 
                 //Checks for dd/mm/yyyy format.
                 dtMonth = dtArray[3];
@@ -74,8 +73,8 @@
 
             function validateform() {
                 var name = document.myform.txtNa.value;
-                var add = document.myform.txtDes.value;
-                var income = document.myform.txtPrice.value;
+                var add = document.myform.txtAddress.value;
+                var income = document.myform.txtIncome.value;
 
 
                 if (name == null || name == "") {
@@ -88,11 +87,18 @@
                 }
 
                var dob = document.myform.txtMnf.value;
-               isDate(dob);
+               if(isDate(dob)==false){
+                   return false;
+               }
+       
                var st = document.myform.txtStart.value;
-               isDate(st);
+               if(isDate(st)==false){
+                   return false;
+               }
                var en = document.myform.txtEnd.value;
-               isDate(en);
+               if(isDate(en)==false){
+                   return false;
+               }
                 var start = Date.parse(document.myform.txtStart.value.split('/').reverse().join('/'));
                 var end = Date.parse(document.myform.txtEnd.value.split('/').reverse().join('/'));
                 if (start > end) {
@@ -106,7 +112,7 @@
 
                 var today = new Date(y, m, d);
 
-                var mdate = new Date(document.myform.txtMnf.value.split('/').reverse().join('/'));
+                var mdate = new Date(document.myform.txtDOB.value.split('/').reverse().join('/'));
 
                 if (mdate > today)
                 {
@@ -129,7 +135,7 @@
                     }
                 }
 
-
+            }
             }
         </script>
         <section class="container" id="search">
@@ -175,18 +181,16 @@
                 }
                 if (request.getParameter("btnSearch") != null) {
                     CustomerDAL customerDAL = new CustomerDAL();
-                    if (request.getParameter("txtMnf").equals("") == true && request.getParameter("txtName").equals("") == true) {
+                    if (request.getParameter("txtDOB").equals("") == true && request.getParameter("txtName").equals("") == true) {
                         isNull = true;
                     } else if (request.getParameter("txtName").equals("")) {
-<<<<<<< HEAD
-                        pList = customerDAL.SearchbyPrice(request.getParameter("txtMnf"));
-=======
-                        pList = customerDAL.SearchbyDOB(request.getParameter("txtMnf"));
->>>>>>> origin/master
-                    } else if (request.getParameter("txtMnf").equals("")) {
+
+                        pList = customerDAL.SearchbyDob(request.getParameter("txtDOB"));
+
+                    } else if (request.getParameter("txtDOB").equals("")) {
                         pList = customerDAL.SearchbyName(request.getParameter("txtName"));
                     } else {
-                        pList = customerDAL.SearchbyBoth(request.getParameter("txtName"), request.getParameter("txtMnf"));
+                        pList = customerDAL.SearchbyBoth(request.getParameter("txtName"), request.getParameter("txtDOB"));
                     }
                 }
 
@@ -195,7 +199,7 @@
                 <h1>Enter customer name or date of birth to search</h1>
                 <p>Customer name: <input class="form-control" type="text" name="txtName">
                     or
-                <p>Date of birth: <input type="text" class="form-control" name="txtMnf" >
+                <p>Date of birth: <input type="text" class="form-control" name="txtDOB" >
 
                 <p><input type="submit"  name="btnSearch"  class="btn btn-primary" value="Search">
                     <input type="reset" name="btnClear" class="btn btn-success" value="Clear" onclick='window.location = "searchcustomer.jsp"'/>
@@ -277,14 +281,14 @@
                                         <p><span class="label label-info">Customer Name:</span>           
                                             <input name="txtNa" id="name" type="text" ></p>
                                         <p><span class="label label-primary">Address:</span>
-                                            <input name="txtDes" id="des" type="text" value=""></p>
+                                            <input name="txtAddress" id="des" type="text" value=""></p>
                                         <p><span class="label label-danger">DOB</span>
-                                            <input name="txtMnf" id="mnf" type="text" ></p>
+                                            <input name="txtDOB" id="mnf" type="text" ></p>
                                         <p><span class="label label-default">Gender</span>
-                                            <input name="txtMadein" id="madein" type="radio" value="Male" <%if (p.getGender().equals("Male")) {%> checked <%}%>>Male  
-                                            <input name="txtMadein" id="madein" type="radio" value="Female"<%if (p.getGender().equals("Female")) {%> checked <%}%>>Female</p>
+                                            <input name="txtSex" id="madein" type="radio" value="Male" <%if (p.getGender().equals("Male")) {%> checked <%}%>>Male  
+                                            <input name="txtSex" id="madein" type="radio" value="Female"<%if (p.getGender().equals("Female")) {%> checked <%}%>>Female</p>
                                         <p><span class="label label-warning">Married</span>
-                                            <input name="txtDiscount" id="discount" type="checkbox" ></p>
+                                            <input name="txtMarried" id="discount" type="checkbox"></p>
                                         <p><span class="label label-info" id="status">Status</span>
                                             <select name="txtStatus">
                                                 <option value="Live" <%if (p.getStatus().contains("Live")) {%> selected <%}%>>Live</option>
@@ -297,7 +301,7 @@
                                             <input name="txtEnd" id="end" type="text" >
                                         </p>
                                         <p><span class="label label-warning">Income</span>
-                                            <input name="txtPrice" id="price" type="text" ></p>
+                                            <input name="txtIncome" id="price" type="text" ></p>
 
                                 </div>
                                 <div class="modal-footer">

@@ -51,7 +51,7 @@ public class CustomerDAL {
         return customerList;
     }
 
-    public ArrayList<Customer> SearchbyDOB(String dob) {
+    public ArrayList<Customer> SearchbyDob(String dob) {
         Customer newCustomer = null;
         ArrayList<Customer> customerList = new ArrayList<Customer>();
         try {
@@ -116,8 +116,8 @@ public class CustomerDAL {
 
             ps.setString(1, Name);
             ps.setString(2, Address);
-            ps.setString(3, Gender);
-            ps.setString(4, Dob);
+            ps.setString(4, Gender);
+            ps.setString(3, Dob);
             ps.setString(5, Married);
             ps.setString(6, Status);
             ps.setString(7, Start);

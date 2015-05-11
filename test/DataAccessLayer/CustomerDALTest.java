@@ -59,7 +59,7 @@ public class CustomerDALTest {
         System.out.println("SearchbyDOB");
         String dob = "erwrwerwerrwrwr";
         CustomerDAL instance = new CustomerDAL();
-        ArrayList<Customer> result = instance.SearchbyDOB(dob);
+        ArrayList<Customer> result = instance.SearchbyDob(dob);
         assertTrue(result.isEmpty());
     }
 

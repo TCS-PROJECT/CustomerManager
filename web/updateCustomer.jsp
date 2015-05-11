@@ -16,13 +16,13 @@
     <body>
         <%
             String discount = "Yes";
-            if (request.getParameter("txtDiscount") == null) {
+            if (request.getParameter("txtMarried") == null) {
                 discount = "No";
             }
 
             CustomerDAL pro = new CustomerDAL();
 
-            pro.Update(request.getParameter("txtNa"), request.getParameter("txtDes"), request.getParameter("txtMadein"), request.getParameter("txtMnf").trim(), discount, request.getParameter("txtStatus"), request.getParameter("txtStart"), request.getParameter("txtEnd"), request.getParameter("txtPrice"), request.getParameter("txtId"));
+            pro.Update(request.getParameter("txtNa"), request.getParameter("txtAddress"), request.getParameter("txtSex"), request.getParameter("txtDOB").trim(), discount, request.getParameter("txtStatus"), request.getParameter("txtStart"), request.getParameter("txtEnd"), request.getParameter("txtIncome"), request.getParameter("txtId"));
             response.sendRedirect("searchcustomer.jsp?where=update");
         %>
         <section class="container" id="update">

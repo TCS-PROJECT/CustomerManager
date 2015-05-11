@@ -22,7 +22,7 @@
                 <dd><a href="SearchUser.jsp">Search User</a></dd>
                 <dt><h2><font color="#3C3C3C">About</font></h2></dt>
                 <dd>Management Customer information</dd>
-                <dd>BCK</dd>
+                <dd>TCS</dd>
                 <dd>Version 1.0</dd>
 
             </dl>
