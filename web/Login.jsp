@@ -7,7 +7,7 @@
 <%@page import="java.sql.ResultSet"%>
 <%@page import="java.sql.Statement"%>
 <%@page import="java.sql.DriverManager"%>
-<%@page import="org.apache.jasper.tagplugins.jstl.core.Redirect"%>
+
 <%@page import="DataAccessLayer.UserDAL"%>
 <%@page import="Model.User"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>

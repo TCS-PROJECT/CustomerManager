@@ -17,8 +17,6 @@ $(function() {
         var pdes = button.data('pdes')
         var pmnf = button.data('pmnf')
         var pmadein = button.data('pmadein')
-        
-        
         var pdc = button.data('pdc')
         var psta = button.data('psta')
         var pstart = button.data('pstart')
@@ -30,19 +28,11 @@ $(function() {
         modal.find('#name').val(pname)
         modal.find('#des').val(pdes)
         modal.find('#mnf').val(pmnf)
-        
         modal.find('#madein').val(pmadein)
-//        document.writeln(modal.find('#madein').val())
-        
-        
-        if (pdc == 'Yes'){
+        if (pdc == 'Yes')
             modal.find('#discount').prop("checked", true);
-        } else {
+        if (pdc == 'No')
             modal.find('#discount').prop("checked", false);
-        }
-            
-            
-        
         modal.find('#status').val(psta)
         modal.find('#start').val(pstart)
         modal.find('#end').val(pend)
@@ -81,5 +71,5 @@ $(function() {
     $("#user a:contains('User')").parent().addClass('active');
     $("#about a:contains('About')").parent().addClass('active');
     // tham khao https://github.com/mimzy/webla
-
 });
+

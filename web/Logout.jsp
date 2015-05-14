@@ -14,7 +14,7 @@
     <body>
         <%
             session.invalidate();
-            response.sendRedirect("/CMS/");
+            response.sendRedirect("Login.jsp");
             
             %>
     </body>
