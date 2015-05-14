@@ -118,7 +118,7 @@ public class UserDAL {
             
             cn = DriverManager.getConnection("Jdbc:Odbc:ADV_Project");
             Statement st = cn.createStatement();
-            if (name.equals("All users")) {
+            if (name.equals("All")) {
                 rs = st.executeQuery("select * from users ");
             } else {
                 rs = st.executeQuery("select * from users where Name like '%" + name + "%' ");
