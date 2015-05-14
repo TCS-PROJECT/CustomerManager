@@ -71,8 +71,12 @@
                 var name = document.myform.txtNa.value;
                 var add = document.myform.txtAddress.value;
                 var income = document.myform.txtIncome.value;
-
-
+                var dob = document.myform.txtDOB.value;
+                var st = document.myform.txtStart.value;
+                var en = document.myform.txtEnd.value;
+                var sex = document.myform.txtSex.value;
+                
+                
                 if (name == null || name == "") {
                     alert("Customer name can't be blank");
                     return false;
@@ -81,17 +85,42 @@
                     alert("Address can't be blank");
                     return false;
                 }
-
-              var dob = document.myform.txtMnf.value;
+                
+                if (dob == null || dob == "") {
+                    alert("Date of birth can't be blank");
+                    return false;
+                }
+                
+                if (sex == null || sex == "") {
+                    alert("Gender can't be blank");
+                    return false;
+                }
+                                               
+                 if (st == null || st == "") {
+                    alert("Start Date can't be blank");
+                    return false;
+                }
+                
+                 if (en == null || en == "") {
+                    alert("End Date can't be blank");
+                    return false;
+                }
+                
+                if (income == null || income == "") {
+                    alert("Income can't be blank");
+                    return false;
+                }
+                
+              
                if(isDate(dob)==false){
                    return false;
                }
        
-               var st = document.myform.txtStart.value;
+               
                if(isDate(st)==false){
                    return false;
                }
-               var en = document.myform.txtEnd.value;
+               
                if(isDate(en)==false){
                    return false;
                }
@@ -109,29 +138,22 @@
                 var today = new Date(y, m, d);
 
                 var mdate = new Date(document.myform.txtDOB.value.split('/').reverse().join('/'));
-
+				// check DOB and today
                 if (mdate > today)
                 {
                     alert("Date of birth can't be in future!");
                     return false;
-                }
-
-                if (income == null || income == "") {
-                    alert("Income can't be blank");
+                }    
+                // check Income
+                var ic = parseFloat(income);
+                if (isNaN(ic)) {
+                    alert("Income must be positive number");
                     return false;
-                } else {
-                    var ic = parseFloat(income);
-                    if (isNaN(ic)) {
-                        alert("Income must be positive number");
-                        return false;
-                    }
-                    else if (ic <= 0) {
-                        alert("Income must be greater than 0");
-                        return false;
-                    }
                 }
-
-
+                else if (ic <= 0) {
+                    alert("Income must be greater than 0");
+                    return false;
+                }
             }
         </script>
         <%
