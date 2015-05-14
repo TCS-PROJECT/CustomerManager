@@ -28,8 +28,8 @@ public class UserDAL {
         User newUser = null;
         try {
             cn = DriverManager.getConnection("Jdbc:Odbc:ADV_Project");
-            Statement st = cn.createStatement();
-            Connection cn = DriverManager.getConnection("Jdbc:Odbc:ADV_Project");
+            //Statement st = cn.createStatement();
+            //Connection cn = DriverManager.getConnection("Jdbc:Odbc:ADV_Project");
             PreparedStatement ps = cn.prepareStatement("select * from Users where Name=?");
             ps.setString(1, userName);
             ResultSet rs = ps.executeQuery();
@@ -38,7 +38,7 @@ public class UserDAL {
             } else {
                 return null;
             }
-
+            cn.close();
         } catch (SQLException ex) {
             Logger.getLogger(User.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -49,7 +49,7 @@ public class UserDAL {
         User newUser = null;
         try {
             cn = DriverManager.getConnection("Jdbc:Odbc:ADV_Project");
-            Connection cn = DriverManager.getConnection("Jdbc:Odbc:ADV_Project");
+            //Connection cn = DriverManager.getConnection("Jdbc:Odbc:ADV_Project");
             PreparedStatement neww = cn.prepareStatement("insert into Users values (?,?)");
             neww.setString(1, name);
             neww.setString(2, password);
@@ -61,7 +61,7 @@ public class UserDAL {
             else{
                 newUser = new User(name, password);
             }
-
+            cn.close();
         } catch (SQLException ex) {
             Logger.getLogger(User.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -72,13 +72,13 @@ public class UserDAL {
         ArrayList<String> newUser = new ArrayList<String>();
         try {
             cn = DriverManager.getConnection("Jdbc:Odbc:ADV_Project");
-            Connection cn = DriverManager.getConnection("Jdbc:Odbc:ADV_Project");
+            //Connection cn = DriverManager.getConnection("Jdbc:Odbc:ADV_Project");
             Statement neww = cn.createStatement();
             ResultSet rs = neww.executeQuery("select * from Users");
             while (rs.next()) {
                 newUser.add(rs.getString(1));
             }
-
+            cn.close();
         } catch (SQLException ex) {
             Logger.getLogger(User.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -90,7 +90,7 @@ public class UserDAL {
         User updateUser = null;
         try {
             cn = DriverManager.getConnection("Jdbc:Odbc:ADV_Project");
-            Connection cn = DriverManager.getConnection("Jdbc:Odbc:ADV_Project");
+            //Connection cn = DriverManager.getConnection("Jdbc:Odbc:ADV_Project");
             PreparedStatement update = cn.prepareStatement("  update Users "
                     + "  set [Password] = ? "
                     + "  where Name = ?");
@@ -105,7 +105,7 @@ public class UserDAL {
                 updateUser = new User(name, password);
             }
             
-
+            cn.close();
         } catch (SQLException ex) {
             Logger.getLogger(User.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -126,7 +126,7 @@ public class UserDAL {
             while (rs.next()) {
                 user.add(new User(rs.getString(1), rs.getString(2)));
             }
-
+            cn.close();
         } catch (SQLException ex) {
             Logger.getLogger(User.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -141,7 +141,7 @@ public class UserDAL {
             PreparedStatement ps = cn.prepareStatement(" delete Users where Name = ? ");
             ps.setString(1, name);
             a = ps.executeUpdate();
-
+            cn.close();
         } catch (SQLException ex) {
             Logger.getLogger(User.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -163,7 +163,7 @@ public class UserDAL {
             } else {
                 return null;
             }
-
+            cn.close();
         } catch (SQLException ex) {
             Logger.getLogger(User.class.getName()).log(Level.SEVERE, null, ex);
         }

@@ -44,7 +44,7 @@ public class CustomerDAL {
             while (rs.next()) {
                 customerList.add(new Customer(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7), rs.getString(8), rs.getString(9), rs.getString(10)));
             }
-
+            cn.close();
         } catch (SQLException ex) {
             Logger.getLogger(User.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -52,7 +52,7 @@ public class CustomerDAL {
     }
 
     public ArrayList<Customer> SearchbyDob(String dob) {
-        Customer newCustomer = null;
+        
         ArrayList<Customer> customerList = new ArrayList<Customer>();
         try {
             cn = DriverManager.getConnection("Jdbc:Odbc:ADV_Project");
@@ -62,7 +62,7 @@ public class CustomerDAL {
             while (rs.next()) {
                 customerList.add(new Customer(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7), rs.getString(8), rs.getString(9), rs.getString(10)));
             }
-
+            cn.close();
         } catch (SQLException ex) {
             Logger.getLogger(User.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -70,7 +70,7 @@ public class CustomerDAL {
     }
 
     public ArrayList<Customer> SearchbyBoth(String userName, String dob) {
-        Customer newCustomer = null;
+        //Customer newCustomer = null;
         ArrayList<Customer> customerList = new ArrayList<Customer>();
         try {
             cn = DriverManager.getConnection("Jdbc:Odbc:ADV_Project");
@@ -80,7 +80,7 @@ public class CustomerDAL {
             while (rs.next()) {
                 customerList.add(new Customer(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7), rs.getString(8), rs.getString(9), rs.getString(10)));
             }
-
+            cn.close();
         } catch (SQLException ex) {
             Logger.getLogger(User.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -91,8 +91,8 @@ public class CustomerDAL {
         Customer newCustomer = null;
         try {
             cn = DriverManager.getConnection("Jdbc:Odbc:ADV_Project");
-            Statement st = cn.createStatement();
-            Connection cn = DriverManager.getConnection("Jdbc:Odbc:ADV_Project");
+            //Statement st = cn.createStatement();
+            //Connection cn = DriverManager.getConnection("Jdbc:Odbc:ADV_Project");
             PreparedStatement ps = cn.prepareStatement("select * from CustomerDetails where ID=?");
             ps.setString(1, Id);
 
@@ -102,6 +102,7 @@ public class CustomerDAL {
             } else {
                 return null;
             }
+            cn.close();
         } catch (SQLException ex) {
             Logger.getLogger(User.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -109,10 +110,10 @@ public class CustomerDAL {
     }
 
     public void Insert(String Name, String Address, String Gender, String Dob, String Married, String Status, String Start, String End, String Income) {
-        Customer newCustomer = null;
+        //Customer newCustomer = null;
         try {
-            Connection cnn = DriverManager.getConnection("Jdbc:Odbc:ADV_Project");
-            PreparedStatement ps = cnn.prepareStatement("insert into CustomerDetails values(?,?,?,?,?,?,?,?,?)");
+            cn = DriverManager.getConnection("Jdbc:Odbc:ADV_Project");
+            PreparedStatement ps = cn.prepareStatement("insert into CustomerDetails values(?,?,?,?,?,?,?,?,?)");
 
             ps.setString(1, Name);
             ps.setString(2, Address);
@@ -125,7 +126,7 @@ public class CustomerDAL {
             ps.setFloat(9, Float.parseFloat(Income));
 
             ps.executeUpdate();
-
+            cn.close();
         } catch (SQLException ex) {
             Logger.getLogger(User.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -135,8 +136,8 @@ public class CustomerDAL {
         
         try {
 
-            Connection cnn = DriverManager.getConnection("Jdbc:Odbc:ADV_Project");
-            PreparedStatement ps = cnn.prepareStatement("update CustomerDetails set Name = ?, Address = ?, Gender = ?, dob = ?, Married = ?, Status = ?, StartDate = ?, EndDate = ?, Income = ? where Id = ?");
+            cn = DriverManager.getConnection("Jdbc:Odbc:ADV_Project");
+            PreparedStatement ps = cn.prepareStatement("update CustomerDetails set Name = ?, Address = ?, Gender = ?, dob = ?, Married = ?, Status = ?, StartDate = ?, EndDate = ?, Income = ? where Id = ?");
 
             ps.setString(1, Name);
             ps.setString(2, Address);
@@ -150,7 +151,7 @@ public class CustomerDAL {
             ps.setInt(10, Integer.parseInt(Id));
 
             ps.executeUpdate();
-
+            cn.close();
         } catch (SQLException ex) {
             //Logger.getLogger(User.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -166,7 +167,7 @@ public class CustomerDAL {
             ps.setInt(1, Integer.parseInt(Id));
 
             ResultSet rs = ps.executeQuery();
-
+            cn.close();
         } catch (SQLException ex) {
             Logger.getLogger(User.class.getName()).log(Level.SEVERE, null, ex);
         }
