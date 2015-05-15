@@ -16,61 +16,6 @@
     </head>
     <body>
         <script >
-            function isDate(txtDate)
-            {
-                 //check date
-
-                var currVal = txtDate;
-                if (currVal == '')
-                {
-                    alert("Date can't be blank");
-                    return false;
-                }
-
-                var rxDatePattern = /^(\d{1,2})(\/|-)(\d{1,2})(\/|-)(\d{4})$/; //Declare Regex
-                var dtArray = currVal.match(rxDatePattern); // is format OK?
-
-                if (dtArray == null)
-                {
-                    alert("Date must be in the format dd/mm/yyyy");
-                    return false;
-                }
-
-                //Checks for dd/mm/yyyy format.
-                dtMonth = dtArray[3];
-                dtDay = dtArray[1];
-                dtYear = dtArray[5];
-
-                if (dtMonth < 1 || dtMonth > 12)
-                {
-                    alert("Date error!");
-                    return false;
-                }
-                else if (dtDay < 1 || dtDay > 31)
-                {
-                    alert("Date error!");
-                    return false;
-                }
-                else if ((dtMonth == 4 || dtMonth == 6 || dtMonth == 9 || dtMonth == 11) && dtDay == 31)
-                {
-                    alert("Date error!");
-                    return false;
-                }
-                else if (dtMonth == 2)
-                {
-                    var isleap = (dtYear % 4 == 0 && (dtYear % 100 != 0 || dtYear % 400 == 0));
-                    if (dtDay > 29 || (dtDay == 29 && !isleap))
-                    {
-                        alert("Date error!");
-                        return false;
-                    }
-                }
-
-                //end check
-
-                return true;
-            }
-
             function validateform() {
                 var name = document.myform.txtNa.value;
                 var add = document.myform.txtAddress.value;
@@ -115,41 +60,23 @@
                     return false;
                 }
                 
-              
-               if(isDate(dob)==false){
-                   return false;
-               }
-       
-               
-               if(isDate(st)==false){
-                   return false;
-               }
-               
-               if(isDate(en)==false){
-                   return false;
-               }
-                var start = Date.parse(document.myform.txtStart.value.split('/').reverse().join('/'));
-                var end = Date.parse(document.myform.txtEnd.value.split('/').reverse().join('/'));
-                if (start > end) {
-                    alert("Start date in must before End date");
-                    return false;
-                }
-                var q = new Date();
-                var m = q.getMonth() + 1;
-                var d = q.getDay();
-                var y = q.getFullYear();
+                var today = new Date();
 
-                var today = new Date(y, m, d);
-
-                var mdate = new Date(document.myform.txtDOB.value.split('/').reverse().join('/'));
-
+                var mdate = new Date(document.myform.txtDOB.value);
+				// check DOB and today
                 if (mdate > today)
                 {
                     alert("Date of birth can't be in future!");
                     return false;
-                }
-
+                }    
                 
+                var start = Date.parse(document.myform.txtStart.value);
+                var end = Date.parse(document.myform.txtEnd.value);
+                if (start > end) {
+                    alert("Start date in must before End date");
+                    return false;
+                }
+ 
                 // check Income
                 var ic = parseFloat(income);
                 if (isNaN(ic)) {
@@ -307,7 +234,7 @@
                                         <p><span class="label label-primary">Address:</span>
                                             <input name="txtAddress" id="des" type="text" value=""></p>
                                         <p><span class="label label-danger">DOB</span>
-                                            <input name="txtDOB" id="mnf" type="text" ></p>
+                                            <input name="txtDOB" id="mnf" type="date" value="<%=p.getDob()%>"></p>
                                         <p><span class="label label-default">Gender</span>
                                             <input name="txtSex" id="madein" type="radio" value="Male" <%if (p.getGender().equals("Male")) {%> checked <%}%>>Male  
                                             <input name="txtSex" id="madein" type="radio" value="Female"<%if (p.getGender().equals("Female")) {%> checked <%}%>>Female</p>
@@ -320,9 +247,9 @@
                                             </select>
                                         <p>
                                             <span class="label label-success">Start Date:</span>
-                                            <input name="txtStart" id="start" type="text" >
+                                            <input name="txtStart" id="start" type="date" value="<%=p.getStartDate()%>">
                                             <span class="label label-danger"> End Date:</span>
-                                            <input name="txtEnd" id="end" type="text" >
+                                            <input name="txtEnd" id="end" type="date" value="<%=p.getEndDate()%>" >
                                         </p>
                                         <p><span class="label label-warning">Income</span>
                                             <input name="txtIncome" id="price" type="text" ></p>
